@@ -1,4 +1,4 @@
-from typing import Any
+import os
 
 
 class Vertice:
@@ -22,11 +22,13 @@ class Vertice:
 
 
 class Graph:
-    def __init__(self) -> None:
+    def __init__(self, path) -> None:
         self.vertices: dict[Vertice] = {}
         self.arestas: dict[tuple[int, int]] = {}
         self.n_vertices = 0
         self.n_arestas = 0
+
+        self.init(path)
 
     def qtdVertices(self):
         return self.n_vertices
@@ -49,8 +51,12 @@ class Graph:
     def peso(self, u, v):
         return self.arestas[(u, v)].peso if (u, v) in self.arestas else float("inf")
 
-    def ler_arquivo(self, path):
-        with open(path) as f:
+    def init(self, path):
+
+        here = os.path.dirname(os.path.abspath(__file__))
+        filename = os.path.join(here, path)
+
+        with open(filename) as f:
             lines = f.readlines()
             edges = False
 
@@ -88,6 +94,5 @@ class Graph:
             self.n_arestas = arestas
 
 
-graph = Graph()
-graph.ler_arquivo("./facebook_santiago.net")
+graph = Graph("facebook_santiago.net")
 print(graph.haAresta(3, 260))

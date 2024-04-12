@@ -30,27 +30,6 @@ class Graph:
 
         self.init(path)
 
-    def qtdVertices(self):
-        return self.n_vertices
-
-    def qtdArestas(self):
-        return self.n_arestas
-
-    def grau(self, v: int):
-        return len(self.vertices[v].vizinhos)
-
-    def rotulo(self, v: int):
-        return self.vertices[v].rotulo
-
-    def vizinhos(self, v: int):
-        return self.vertices[v].vizinhos
-
-    def haAresta(self, u, v):
-        return (u, v) in self.arestas
-
-    def peso(self, u, v):
-        return self.arestas[(u, v)].peso if (u, v) in self.arestas else float("inf")
-
     def init(self, path):
 
         here = os.path.dirname(os.path.abspath(__file__))
@@ -93,6 +72,23 @@ class Graph:
 
             self.n_arestas = arestas
 
+    def qtdVertices(self):
+        return self.n_vertices
 
-graph = Graph("facebook_santiago.net")
-print(graph.haAresta(3, 260))
+    def qtdArestas(self):
+        return self.n_arestas
+
+    def grau(self, v: int):
+        return len(self.vertices[v].vizinhos)
+
+    def rotulo(self, v: int):
+        return self.vertices[v].rotulo
+
+    def vizinhos(self, v: int):
+        return self.vertices[v].vizinhos
+
+    def haAresta(self, u, v):
+        return (u, v) in self.arestas
+
+    def peso(self, u, v):
+        return self.arestas[(u, v)].peso if (u, v) in self.arestas else float("inf")

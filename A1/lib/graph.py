@@ -23,7 +23,7 @@ class Vertice:
 
 class Graph:
     def __init__(self, path) -> None:
-        self.vertices: dict[Vertice] = {}
+        self.vertices: dict[int, Vertice] = {}
         self.arestas: dict[tuple[int, int]] = {}
         self.n_vertices = 0
         self.n_arestas = 0
@@ -52,15 +52,14 @@ class Graph:
                 elif edges:
                     edges = line.split(" ")
 
-                    # aresta = Aresta(int(edges[0]), int(edges[1]), float(edges[2]))
-                    u = int(edges[0])
-                    v = int(edges[1])
+                    v = int(edges[0])
+                    u = int(edges[1])
                     peso = float(edges[2])
 
-                    self.arestas[(u, v)] = peso
+                    self.arestas[(v, u)] = peso
 
-                    vertice: Vertice = self.vertices[u]
-                    vertice.add_vizinhos(v, peso)
+                    self.vertices[u].add_vizinhos(v, peso)
+                    self.vertices[v].add_vizinhos(u, peso)
 
                     arestas += 1
 

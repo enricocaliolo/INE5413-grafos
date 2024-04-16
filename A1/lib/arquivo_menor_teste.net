@@ -1,4 +1,4 @@
-*vertices 3
+*vertices 6
 1 "João Luiz Ferreira Júnior"
 2 "Renan Alfarth"
 3 "João Luiz Cadore"
@@ -6,10 +6,10 @@
 5 "Gabriel Jesus"
 6 "Endrick"
 *edges
-1 2 1.0
+1 2 2.0
 1 4 1.0
-2 3 1.0
+2 3 4.0
 3 5 1.0
-4 5 1.0
-4 6 1.0
+4 5 3.0
+4 6 2.0
 5 6 1.0

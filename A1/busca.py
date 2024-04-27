@@ -61,8 +61,5 @@ import sys
 
 if __name__ == "__main__":
 
-    file = sys.argv[1]
-    vertice = int(sys.argv[2])
-
-    graph = Graph(file)
-    busca(graph, vertice)
+    graph = Graph("testes/fln_pequena.net")
+    busca(graph, 1)

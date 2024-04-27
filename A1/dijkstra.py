@@ -46,7 +46,7 @@ def dijkstra(graph: Graph, v_origem):
 
         for w in u.vizinhos:
             if not verticesInfo[w].isKnown:
-                aresta: Aresta = graph.findAresta(u.index, w)
+                aresta = graph.findAresta(u.index, w)
                 if (
                     verticesInfo[w].distancia
                     > verticesInfo[u.index].distancia + aresta.peso
@@ -76,5 +76,5 @@ import sys
 
 if __name__ == "__main__":
 
-    graph = Graph("fln_pequena.net")
+    graph = Graph("testes/fln_pequena.net")
     r = dijkstra(graph, 1)

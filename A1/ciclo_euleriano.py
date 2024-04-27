@@ -2,14 +2,19 @@ from graph import Graph, Vertice
 
 
 def hasEdgeNotVisited(vertice: Vertice, arestas_visitadas: dict[tuple[int, int], bool]):
-
     for vizinho in vertice.vizinhos:
-        if (vertice.index, vizinho) in arestas_visitadas:
-            if arestas_visitadas[(vertice.index, vizinho)] == False:
-                return True
+        aresta = graph.findAresta(vertice.index, vizinho)
 
-        elif (vizinho, vertice.index) in arestas_visitadas:
-            if arestas_visitadas[(vizinho, vertice.index)] == False:
+        # if (vertice.index, vizinho) in arestas_visitadas:
+        #     if arestas_visitadas[(vertice.index, vizinho)] == False:
+        #         return True
+
+        # elif (vizinho, vertice.index) in arestas_visitadas:
+        #     if arestas_visitadas[(vizinho, vertice.index)] == False:
+        #         return True
+
+        if aresta in arestas_visitadas:
+            if arestas_visitadas[aresta] == False:
                 return True
 
     return False
@@ -58,10 +63,10 @@ def buscarSubcicloEuleriano(
     return True, ciclo
 
 
-def ciclo_euleriano(graph: Graph) -> tuple[bool, int]:
+def ciclo_euleriano(graph: Graph):
     arestas_visitadas = {}
 
-    for aresta in graph.arestas:
+    for aresta in graph.traverseArestas():
         arestas_visitadas[aresta] = False
 
     for vertice in graph.vertices.values():
@@ -75,7 +80,7 @@ def ciclo_euleriano(graph: Graph) -> tuple[bool, int]:
 
 
 if __name__ == "__main__":
-    graph = Graph("fln_pequena.net")
+    graph = Graph("testes/SemCicloEuleriano.net")
     r, c = ciclo_euleriano(graph)
 
     if r:

@@ -17,8 +17,8 @@ def floyd_warshall(graph: Graph):
 
             else:
                 aresta = graph.findAresta(i + 1, j + 1)
-                matriz[i][j] = graph.arestas[aresta].peso
-                matriz[j][i] = graph.arestas[aresta].peso
+                matriz[i][j] = aresta.peso
+                matriz[j][i] = aresta.peso
 
     for k in range(n_vertices):
         for i in range(n_vertices):
@@ -32,5 +32,5 @@ def floyd_warshall(graph: Graph):
 
 if __name__ == "__main__":
 
-    graph = Graph("fln_pequena.net")
+    graph = Graph("testes/fln_pequena.net")
     floyd_warshall(graph)

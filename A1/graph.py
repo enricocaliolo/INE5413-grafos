@@ -105,9 +105,9 @@ class Graph:
 
     def findAresta(self, v: int, u: int):
         if (v, u) in self.arestas:
-            return (v, u)
+            return self.arestas[(v, u)]
         elif (u, v) in self.arestas:
-            return (u, v)
+            return self.arestas[(u, v)]
 
         return None
 

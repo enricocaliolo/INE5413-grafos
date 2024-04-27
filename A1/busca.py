@@ -1,4 +1,4 @@
-from lib.graph import Graph, Vertice
+from graph import Graph, Vertice
 
 
 class VerticeInfo:
@@ -45,21 +45,24 @@ def busca(graph: Graph, v_origem):
                 if distance in retData:
                     retData[distance] = [
                         *retData[distance],
-                        vertices[vizinho].vertice.rotulo,
+                        vertices[vizinho].vertice.index,
                     ]
 
                 else:
-                    retData[distance] = [vertices[vizinho].vertice.rotulo]
+                    retData[distance] = [vertices[vizinho].vertice.index]
 
     # just for the return from the input
+    print(f"0: {v_origem}")
     for key, value in retData.items():
-        print(f'{key}: {",".join(value)}')
+        print(f"{key}: {','.join(str(e) for e in value)}")
 
+
+import sys
 
 if __name__ == "__main__":
 
-    # print(sys.argv[1])
+    file = sys.argv[1]
+    vertice = int(sys.argv[2])
 
-    # graph = Graph(str(sys.argv[1]))
-    graph = Graph("arquivo_menor_teste.net")
-    busca(graph, 1)
+    graph = Graph(file)
+    busca(graph, vertice)

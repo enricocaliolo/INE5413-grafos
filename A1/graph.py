@@ -39,10 +39,10 @@ class Graph:
 
     def init(self, path):
 
-        here = os.path.dirname(os.path.abspath(__file__))
-        filename = os.path.join(here, path)
+        # here = os.path.dirname(os.path.abspath(__file__))
+        # filename = os.path.join(here, path)
 
-        with open(filename) as f:
+        with open(path) as f:
             lines = f.readlines()
             edges = False
 
@@ -103,11 +103,11 @@ class Graph:
     def peso(self, u, v):
         return self.arestas[(u, v)].peso if (u, v) in self.arestas else float("inf")
 
-    def findAresta(self, v: int, u: int) -> Aresta:
+    def findAresta(self, v: int, u: int):
         if (v, u) in self.arestas:
-            return self.arestas(v, u)
+            return (v, u)
         elif (u, v) in self.arestas:
-            return self.arestas(u, v)
+            return (u, v)
 
         return None
 

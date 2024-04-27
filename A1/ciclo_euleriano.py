@@ -23,8 +23,7 @@ def buscarSubcicloEuleriano(
     ciclo: list[int] = [v.index]
     t = v
 
-    while v == t:
-
+    while True:
         if not hasEdgeNotVisited(v, arestas_visitadas):
             return False, 0
 
@@ -34,6 +33,9 @@ def buscarSubcicloEuleriano(
                 arestas_visitadas[aresta] = True
                 v = graph.vertices[u]
                 ciclo.append(v.index)
+
+        if v == t:
+            break
 
     for x in ciclo:
         for v in graph.vertices[x].vizinhos:
@@ -73,9 +75,12 @@ def ciclo_euleriano(graph: Graph) -> tuple[bool, int]:
 
 
 if __name__ == "__main__":
-    graph = Graph("SemCicloEuleriano.net")
+    graph = Graph("fln_pequena.net")
     r, c = ciclo_euleriano(graph)
 
     if r:
-        for v in c:
-            print(v)
+        print(f"1")
+        print(f"{','.join(str(v) for v in c)}")
+
+    else:
+        print(0)

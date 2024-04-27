@@ -73,7 +73,7 @@ class Graph:
                     arestas += 1
 
                 elif not edges:
-                    vertice = line.split('"')
+                    vertice = line.split(" ", maxsplit=1)
                     index = int(vertice[0].strip())
                     rotulo = vertice[1]
                     self.vertices[index] = Vertice(index, rotulo)

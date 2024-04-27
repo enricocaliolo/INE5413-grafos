@@ -61,4 +61,4 @@ def bellman_ford(graph: Graph, vertice_origem: int):
 
 if __name__ == "__main__":
     graph = Graph("arquivo_menor_teste.net")
-    result = bellman_ford(graph, 1)
+    result = bellman_ford(graph, 3)

@@ -1,4 +1,4 @@
-from lib.graph import Graph, Vertice
+from graph import Graph, Vertice
 
 
 def hasEdgeNotVisited(vertice: Vertice, arestas_visitadas: dict[tuple[int, int], bool]):
@@ -67,13 +67,13 @@ def ciclo_euleriano(graph: Graph) -> tuple[bool, int]:
             continue
         break
 
-    r, c = buscarSubcicloEuleriano(graph, graph.vertices[0], arestas_visitadas)
+    r, c = buscarSubcicloEuleriano(graph, graph.vertices[1], arestas_visitadas)
 
     return r, c
 
 
 if __name__ == "__main__":
-    graph = Graph("arquivo_teste_eulerian.net")
+    graph = Graph("SemCicloEuleriano.net")
     r, c = ciclo_euleriano(graph)
 
     if r:

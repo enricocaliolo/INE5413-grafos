@@ -62,4 +62,4 @@ import sys
 if __name__ == "__main__":
 
     graph = Graph("testes/fln_pequena.net")
-    busca(graph, 1)
+    print(graph.peso(4, 1))

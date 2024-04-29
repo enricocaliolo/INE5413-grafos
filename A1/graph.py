@@ -98,10 +98,20 @@ class Graph:
     def haAresta(self, u, v):
         if (u, v) in self.arestas:
             return True
+
+        elif (v, u) in self.arestas:
+            return True
+
         return False
 
     def peso(self, u, v):
-        return self.arestas[(u, v)].peso if (u, v) in self.arestas else float("inf")
+        if (u, v) in self.arestas:
+            return self.arestas[(u, v)].peso
+
+        elif (v, u) in self.arestas:
+            return self.arestas[(v, u)].peso
+
+        return None
 
     def findAresta(self, v: int, u: int):
         if (v, u) in self.arestas:

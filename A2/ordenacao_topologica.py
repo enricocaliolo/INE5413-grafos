@@ -62,6 +62,6 @@ class OrdenacaoTopologica:
 
 
 if __name__ == "__main__":
-    graph = Graph("testes/manha.net", isDriven=True)
+    graph = Graph("testes/ordenacao.net", isDriven=True)
     ordenacao = OrdenacaoTopologica()
     ordenacao.ordenacao_topologica(graph)

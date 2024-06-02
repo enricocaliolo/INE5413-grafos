@@ -18,34 +18,15 @@ class ComponentesFortementeConexas:
 
     def componentes_fortemente_conexas(self, graph: Graph):
 
-        retData: dict[int, VerticeInfo] = self.dfs(graph)
+        dfsOnOriginalGraph: dict[int, VerticeInfo] = self.dfs(graph)
 
         graph.transporGrafo()
 
-        retData2: dict[int, VerticeInfo] = self.dfs(
-            graph, alterado=True, vertices_anteriores=retData
+        dfsOnTransposedGraph: dict[int, VerticeInfo] = self.dfs(
+            graph, alterado=True, vertices_anteriores=dfsOnOriginalGraph
         )
 
-        florestas = {}
-        antecessores = {}
-
-        for index, data in retData2.items():
-            antecessores[index] = data.antecessor
-            if data.antecessor is None:
-                florestas[index] = []
-
-        for v, a in antecessores.items():
-            v_atual = v
-
-            while True:
-                if a is None:
-                    florestas[v_atual].append(v)
-                    break
-
-                v_atual, a = a, antecessores[v_atual]
-
-        for floresta in florestas.values():
-            print(",".join([str(i) for i in floresta]))
+        self.printFlorestas(dfsOnTransposedGraph)
 
     def dfs(self, graph: Graph, alterado: bool = False, vertices_anteriores=None):
 
@@ -90,6 +71,26 @@ class ComponentesFortementeConexas:
 
         self.tempo += 1
         vertices[v.index].f = self.tempo
+
+    def printFlorestas(self, dfsOnTransposedGraph):
+        florestas = {}
+        antecessores = {}
+
+        for index, data in dfsOnTransposedGraph.items():
+            antecessores[index] = data.antecessor
+            if data.antecessor is None:
+                florestas[index] = []
+
+        for v, a in antecessores.items():
+            v_atual = v
+
+            while a is not None:
+                v_atual, a = a, antecessores[v_atual]
+
+            florestas[v_atual].append(v)
+
+        for floresta in florestas.values():
+            print(",".join([str(i) for i in floresta]))
 
 
 if __name__ == "__main__":
